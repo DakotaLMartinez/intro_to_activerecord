@@ -6,5 +6,9 @@ ActiveRecord::Base.establish_connection(
 )
 
 RSpec::Core::RakeTask.new(:spec)
+desc "Says HI"
+task :hi do 
+    puts "hello!"
+end
 
 task :default => :spec
