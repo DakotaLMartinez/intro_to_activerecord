@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_160832) do
+ActiveRecord::Schema.define(version: 2021_06_14_185524) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "author"
     t.boolean "sold", default: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "author"
+    t.boolean "complete", default: false, null: false
   end
 
 end
