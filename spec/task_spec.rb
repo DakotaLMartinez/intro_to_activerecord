@@ -15,8 +15,8 @@ RSpec.describe "ActiveRecord Exercise" do
   describe "#learning_activerecord" do 
     it "creates a new Task with a title of 'Learn about ActiveRecord' and returns it" do 
       task = learning_activerecord
-      expect(task).not_to be nil
-      expect(task.id).not_to be nil
+      expect(task).not_to eq(nil)
+      expect(task.id).not_to eq(nil)
       expect(task.title).to eq('Learn about ActiveRecord')
     end
 

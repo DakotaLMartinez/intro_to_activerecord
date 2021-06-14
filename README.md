@@ -109,10 +109,10 @@ Take a look at the table below for a sampling of the methods we'd get access to:
 
 |CRUD|Method|Arguments|Return value|Type|
 |----|----|----|----|----|
-|Create|`Book.new(attributes)`|takes a hash of attributes whose keys are setter methods in the Book class.|Returns a Book instance after all of the setter methods have been invoked on the Book. The tweet will not be saved to the database, so it will not have an id attribute yet.|Initialize|
+|Create|`Book.new(attributes)`|takes a hash of attributes whose keys are setter methods in the Book class.|Returns a Book instance after all of the setter methods have been invoked on the Book. The book will not be saved to the database, so it will not have an id attribute yet.|Initialize|
 |Create|`Book.create(attributes)`|same as new above|Same return value as above but this time the Book will be persisted to the database and the returned Book object will have the id assigned by the db.|Class method|
 |Create/Update|`@book.save`|none|If @book is already saved to the database, this will trigger an update query. If not, `save` triggers an insert, creating a new row in the appropriate table. Returns `false` if any validations attached to the Book class fail for this instance.|Instance method
-|Read|`Book.all`|none|an ActiveRecord::Relation containing a collection of Book instances built from data stored in the tweets table.|Class method|
+|Read|`Book.all`|none|an ActiveRecord::Relation containing a collection of Book instances built from data stored in the books table.|Class method|
 |Read|`Book.find(1)`|id|returns a Book instance with the id matching the value passed as an argument. This method raises an `ActiveRecord::RecordNotFound` exception if there is no row in the database with a matching id.|Class method|
 |Read|`Book.find_by(title: "The Lord of the Rings")`|a hash - keys are column names, corresponding values will be used in query to find the row that has those values for those columns.|A Book instance built from the first record in the books table that has a value in the title column "The Lord of the Rings" If no record is found, this method returns `nil` |Class method|
 |Read|`Book.where(author: "JRR Tolkien")`|hash of attributes - same as find_by above.|An `ActiveRecord::Relation` containing a collection of all books where the `author` column has a value of `"JRR Tolkien"`|Class method|
