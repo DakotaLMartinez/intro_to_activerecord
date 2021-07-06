@@ -4,11 +4,33 @@ RSpec.describe "ActiveRecord Exercise" do
       expect(Task).not_to be nil
       expect(Task.superclass).to eq(ActiveRecord::Base)
     end
-  end
 
-  describe "tasks table" do 
-    it "exists" do 
-      expect{Task.all}.not_to raise_error
+    describe "tasks table" do 
+      it "exists" do 
+        expect{Task.first}.not_to raise_error
+      end
+
+      it "has the appropriate columns" do 
+        expect{Task.new(
+          title: "Learning about ActiveRecord", 
+          description: "The ORM to rule them all, ActiveRecord adds a ton of methods we can use to handle database related tasks.",
+          complete: true
+        )}.not_to raise_error
+      end
+
+      it "has a default value for complete of false" do 
+        testing = Task.new(title: "testing")
+        expect(testing.save).to be true
+        expect(testing.complete?).to be false
+      end
+    end
+
+    describe "has validations" do 
+      it "requires that the title be present" do 
+        task = Task.new
+        expect(task.valid?).to be false
+        expect(task.errors[:title]).to include("can't be blank")
+      end
     end
   end
 
